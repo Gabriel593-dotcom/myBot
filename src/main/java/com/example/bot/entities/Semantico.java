@@ -11,24 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_semantico")
+@Table(name = "tb_semantico")
 public class Semantico implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String sinonimo;
+	private String mensagemFormatada;
 	
 	@ManyToOne
-	@JoinColumn(name="interacao_id")
-	private Interacao interacao; 
-	
-	public Semantico() {}
+	@JoinColumn(name = "interacao_id")
+	private Interacao interacao;
 
-	public Semantico(Long id, String sinonimo, Interacao interacao) {
+	public Semantico() {
+	}
+
+	public Semantico(Long id, String mensagemFormatada, Interacao interacao) {
 		this.id = id;
-		this.sinonimo = sinonimo;
+		this.mensagemFormatada = mensagemFormatada;
 		this.interacao = interacao;
 	}
 
@@ -40,12 +41,12 @@ public class Semantico implements Serializable {
 		this.id = id;
 	}
 
-	public String getSinonimo() {
-		return sinonimo;
+	public String getMensagemFormatada() {
+		return mensagemFormatada;
 	}
 
-	public void setSinonimo(String sinonimo) {
-		this.sinonimo = sinonimo;
+	public void setMensagemFormatada(String mensagemFormatada) {
+		this.mensagemFormatada = mensagemFormatada;
 	}
 
 	public Interacao getInteracao() {
@@ -55,7 +56,5 @@ public class Semantico implements Serializable {
 	public void setInteracao(Interacao interacao) {
 		this.interacao = interacao;
 	}
-	
-	
-	
+
 }
