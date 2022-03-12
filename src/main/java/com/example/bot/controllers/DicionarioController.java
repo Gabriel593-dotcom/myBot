@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.bot.entities.Dicionario;
-import com.example.bot.entities.Interacao;
-import com.example.bot.entities.Semantico;
 import com.example.bot.service.DicionarioService;
 import com.example.bot.service.SemanticoService;
 
@@ -27,9 +25,6 @@ public class DicionarioController {
 
 	@Autowired
 	private DicionarioService service;
-
-	@Autowired
-	private SemanticoService semanticoService;
 
 	@GetMapping
 	public ResponseEntity<List<Dicionario>> findAll() {
