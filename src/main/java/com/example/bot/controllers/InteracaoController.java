@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.bot.controllers.util.URL;
 import com.example.bot.entities.Interacao;
 import com.example.bot.service.InteracaoService;
 
@@ -34,6 +36,14 @@ public class InteracaoController {
 		
 		Interacao obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping(value="/findResposta")
+	public ResponseEntity<Interacao> findResposta(@RequestParam("pergunta") String pergunta){
+		
+		pergunta = URL.decodeParam(pergunta);
+		Interacao interacao = service.findReposta(pergunta);
+		return ResponseEntity.ok().body(interacao);
 	}
 	
 	@PostMapping(value="/saveInteracao")

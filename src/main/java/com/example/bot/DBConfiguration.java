@@ -11,7 +11,6 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
-@Profile("dev")
 public class DBConfiguration {
 
 	// configuração com o banco de dados.

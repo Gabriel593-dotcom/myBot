@@ -9,7 +9,7 @@ import com.example.bot.entities.Dicionario;
 
 public interface DicionarioRepository extends JpaRepository<Dicionario, Long>{
 
-	@Query(value = "select * from tb_dicionario where substring_index(sinonimos, ',' ,:posicao) like %:sinonimo% limit 1", nativeQuery = true)
-	Dicionario findBySinonimo(@Param("sinonimo") String sinonimo, @Param("posicao") int posicao);
+//	@Query(value = "select * from tb_dicionario where substring_index(sinonimos, ',' ,:posicao) like %:sinonimo% limit 1", nativeQuery = true)
+//	Dicionario findBySinonimo(@Param("sinonimo") String sinonimo, @Param("posicao") int posicao);
 
 }

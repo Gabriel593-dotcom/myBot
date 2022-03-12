@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bot.entities.Interacao;
+import com.example.bot.entities.Semantico;
 import com.example.bot.repositories.InteracaoRepository;
+import com.example.bot.repositories.SemanticoRepository;
 import com.example.bot.service.exceptions.ResourceAlreadyExistsException;
 import com.example.bot.service.exceptions.ResourceNotFoundException;
 
@@ -18,6 +20,12 @@ public class InteracaoService {
 	@Autowired
 	private InteracaoRepository repository;
 	
+	@Autowired
+	private SemanticoRepository semanticoRepository;
+	
+	@Autowired 
+	private DicionarioService dicioService;
+	
 	public List<Interacao> findAll(){
 		return repository.findAll();
 	}
@@ -26,6 +34,12 @@ public class InteracaoService {
 		
 		Optional<Interacao> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException("Interação não encontrada."));
+	}
+	
+	public Interacao findReposta(String pergunta) {
+		String mensagemFormatada = dicioService.findBySinonimo(pergunta);
+		Semantico semantico = semanticoRepository.findByMensagemFormatada(mensagemFormatada);
+		return semantico.getInteracao();
 	}
 	
 	public void insert(Interacao obj) {

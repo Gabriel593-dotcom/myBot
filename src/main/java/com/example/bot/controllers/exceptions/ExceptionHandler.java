@@ -20,7 +20,7 @@ public class ExceptionHandler {
 				request.getRequestURI());
 		return ResponseEntity.status(status).body(standardError);
 	}
-	
+
 	@org.springframework.web.bind.annotation.ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> resourceNotFOund(HttpServletRequest request, ResourceNotFoundException e) {
 		String error = "Resource not found.";
@@ -28,11 +28,12 @@ public class ExceptionHandler {
 		return handlerBuilder(error, status, e, request);
 
 	}
-	
+
 	@org.springframework.web.bind.annotation.ExceptionHandler(ResourceAlreadyExistsException.class)
-	public ResponseEntity<StandardError> resourceAlreadyExists(HttpServletRequest request, ResourceAlreadyExistsException e){
+	public ResponseEntity<StandardError> resourceAlreadyExists(HttpServletRequest request,
+			ResourceAlreadyExistsException e) {
 		String error = "Resource Already Exists.";
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		return handlerBuilder(error, status, e , request);
+		return handlerBuilder(error, status, e, request);
 	}
 }
