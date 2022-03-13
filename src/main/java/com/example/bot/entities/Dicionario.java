@@ -14,27 +14,27 @@ import javax.persistence.Table;
 @Table(name = "tb_dicionario")
 public class Dicionario implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String palavra;
 	private String sinonimos;
 
 	public Dicionario() {
 	}
 
-	public Dicionario(Long id, String palavra, String sinonimos) {
+	public Dicionario(Integer id, String palavra, String sinonimos) {
 		this.id = id;
 		this.palavra = palavra;
 		this.sinonimos = sinonimos;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

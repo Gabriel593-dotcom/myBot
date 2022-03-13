@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.bot.entities.Interacao;
 
-public interface InteracaoRepository extends JpaRepository<Interacao, Long>{
+public interface InteracaoRepository extends JpaRepository<Interacao, Integer>{
 
 }

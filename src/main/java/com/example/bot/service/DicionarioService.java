@@ -55,7 +55,7 @@ public class DicionarioService {
 		return formatedMessage.replaceAll("null", "").trim();
 	}
 
-	public Dicionario findById(Long id) {
+	public Dicionario findById(Integer id) {
 
 		Optional<Dicionario> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ResourceNotFoundException("Sinonimo não foi encontrado."));
@@ -72,11 +72,11 @@ public class DicionarioService {
 		}
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
-//	public Dicionario update(Long id, Dicionario obj) {
+//	public Dicionario update(Integer id, Dicionario obj) {
 //		Dicionario sinonimo = repository.getById(id);
 //		setUpdates(sinonimo, obj);
 //		

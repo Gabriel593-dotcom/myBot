@@ -17,7 +17,7 @@ public class Semantico implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String mensagemFormatada;
 	
 	@ManyToOne
@@ -27,17 +27,17 @@ public class Semantico implements Serializable {
 	public Semantico() {
 	}
 
-	public Semantico(Long id, String mensagemFormatada, Interacao interacao) {
+	public Semantico(Integer id, String mensagemFormatada, Interacao interacao) {
 		this.id = id;
 		this.mensagemFormatada = mensagemFormatada;
 		this.interacao = interacao;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

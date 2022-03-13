@@ -1,8 +1,11 @@
 package com.example.bot.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.example.bot.entities.Semantico;
@@ -15,8 +18,9 @@ public class SemanticoService {
 	@Autowired
 	private SemanticoRepository repository;
 	
-	public List<Semantico> findAll(){
-		return repository.findAll();
+	public Page<Semantico> findAll(Integer page, Integer size, String direction, String orderBy){
+		PageRequest pageRequest = PageRequest.of(page, size, Direction.valueOf(direction), orderBy);
+		return repository.findAll(pageRequest);
 	}
 	
 	public Semantico findByMensagemFormatada(String mensagem) {
@@ -27,5 +31,10 @@ public class SemanticoService {
 		else {
 			throw new ResourceNotFoundException("Desculpe...nã te entendi. Tente com outras palavras por gentileza.");
 		}
+	}
+	
+	public Semantico findById(Integer id) {
+		Optional<Semantico> obj = repository.findById(id);
+		return obj.orElseThrow(() -> new ResourceNotFoundException("Mensagem formatada não encontrada."));
 	}
 }

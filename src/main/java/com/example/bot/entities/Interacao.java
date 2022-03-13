@@ -19,10 +19,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "tb_interacao")
 public class Interacao implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Integer Id;
 	private String pergunta;
 	private String resposta;
 
@@ -37,18 +37,18 @@ public class Interacao implements Serializable {
 	public Interacao() {
 	}
 
-	public Interacao(Long id, String pergunta, String resposta, Classe classe) {
+	public Interacao(Integer id, String pergunta, String resposta, Classe classe) {
 		Id = id;
 		this.pergunta = pergunta;
 		this.resposta = resposta;
 		this.classe = classe;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return Id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		Id = id;
 	}
 
@@ -74,6 +74,10 @@ public class Interacao implements Serializable {
 
 	public void setClasse(Classe classe) {
 		this.classe = classe;
+	}
+
+	public List<Semantico> getSemanticos() {
+		return semanticos;
 	}
 
 }
