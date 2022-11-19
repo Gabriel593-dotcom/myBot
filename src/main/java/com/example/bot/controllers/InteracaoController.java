@@ -37,7 +37,7 @@ public class InteracaoController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Interacao> findById(@PathVariable Long id) {
+	public ResponseEntity<Interacao> findById(@PathVariable Integer id) {
 
 		Interacao obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);

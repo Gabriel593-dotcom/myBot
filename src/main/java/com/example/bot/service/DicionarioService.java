@@ -43,7 +43,7 @@ public class DicionarioService {
 
 					System.out.println("sinonimo: " + dicio.get(l).getSinonimos().split(",")[j] + " - " + "palavra: "
 							+ sinonimo.split(" ")[i]);
-					if (dicio.get(l).getSinonimos().split(",")[j].equals(sinonimo.split(" ")[i])) {
+					if (dicio.get(l).getSinonimos().split(",")[j].trim().equals(sinonimo.split(" ")[i].trim())) {
 						formatedMessage += " " + dicio.get(l).getPalavra();
 						j = dicio.get(l).getSinonimos().split(",").length;
 						l = dicio.size() - 1;
@@ -52,6 +52,9 @@ public class DicionarioService {
 			}
 		}
 
+		if(formatedMessage.isBlank() || formatedMessage.isEmpty()) {
+			throw new ResourceNotFoundException("Desculpa, não te entendi.");
+		}
 		return formatedMessage.replaceAll("null", "").trim();
 	}
 

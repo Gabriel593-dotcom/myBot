@@ -17,7 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.bot.entities.Dicionario;
 import com.example.bot.service.DicionarioService;
-import com.example.bot.service.SemanticoService;
 
 @RestController
 @RequestMapping(value = "/dicionarios")
@@ -34,7 +33,7 @@ public class DicionarioController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Dicionario> findById(@PathVariable Long id) {
+	public ResponseEntity<Dicionario> findById(@PathVariable Integer id) {
 		Dicionario obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -50,7 +49,7 @@ public class DicionarioController {
 	}
 
 	@DeleteMapping(value = "/deleteSinonimo")
-	public ResponseEntity<Void> delete(@RequestParam("sinonimo_id") long id) {
+	public ResponseEntity<Void> delete(@RequestParam("sinonimo_id") Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

@@ -8,6 +8,6 @@ import com.example.bot.entities.Semantico;
 
 public interface SemanticoRepository extends JpaRepository<Semantico, Integer> {
 	
-	@Query(value="SELECT * FROM TB_SEMANTICO WHERE MENSAGEM_FORMATADA = :mesagemFormatada", nativeQuery = true)
+	@Query(value="SELECT * FROM tb_semantico WHERE MENSAGEM_FORMATADA = :mesagemFormatada", nativeQuery = true)
 	Semantico findByMensagemFormatada(@Param("mesagemFormatada") String mensagem);
 }
